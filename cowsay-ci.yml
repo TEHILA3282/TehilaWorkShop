@@ -42,3 +42,8 @@ jobs:
     - name: Push Docker image to DockerHub
       run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/cowsay-app:latest
       # Pushes the Docker image to DockerHub.
+        - name: Wait for app to start
+        run: sleep 5
+
+      - name: Test application
+        run: curl http://localhost:8080
